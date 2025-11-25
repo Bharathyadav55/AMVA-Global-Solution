@@ -1,0 +1,29 @@
+/* src/index.css */
+
+/* Tailwind v4 with @tailwindcss/vite expects this import which the plugin expands */
+@import "tailwindcss";
+
+/* Optional extra helpers and initial background to reduce flash */
+:root {
+  --transition-fast: 200ms;
+}
+
+/* Ensure page background matches Tailwind's light/dark base */
+html { background-color: #f8fafc; }    /* gray-50 */
+html.dark { background-color: #0f172a; } /* gray-900 */
+
+/* Default text smoothing / transitions */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+/* Accessibility focus */
+:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+/* Helper: if you have any global tags that were previously hard-coded, prefer using utilities in components */
+/* (No further global color declarations to avoid conflicts with Tailwind utilities) */
