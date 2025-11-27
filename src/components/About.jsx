@@ -1,7 +1,7 @@
 // src/components/About.jsx
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Logo from "../assets/logo.png"; // update path if needed
+import Logo from "../assets/logo.png";
 
 const HERO_IMAGE_URL =
   "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=1200&q=80";
@@ -51,50 +51,61 @@ const differentiatorCards = [
 
 const containerVariant = {
   hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.10 } },
+  visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } },
 };
 
 const cardVariant = { hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } };
 
 export default function About() {
-  // ensure we don't rely on server-side layout issues when using framer motion/viewport
   const [isClient, setIsClient] = useState(false);
   useEffect(() => setIsClient(true), []);
 
   const Content = (
-    <div className="mx-auto max-w-6xl rounded-2xl border border-slate-100 bg-white px-6 py-10 shadow-sm md:px-10">
-      <div className="mb-8 flex flex-col items-center text-center">
-        <img src={HERO_IMAGE_URL} alt="AMVA Team" className="h-24 w-24 rounded-full object-cover border border-slate-100" />
-        <div className="mt-4 flex items-center gap-3">
-          <img src={Logo} alt="AMVA logo" className="h-9 w-9 rounded-md object-contain" />
+    <div className="mx-auto max-w-6xl rounded-2xl border border-slate-100 bg-white px-5 py-8 shadow-sm md:px-8">
+      <div className="mb-6 flex flex-col items-center text-center">
+        <img
+          src={HERO_IMAGE_URL}
+          alt="AMVA Team"
+          className="h-20 w-20 rounded-full object-cover border border-slate-100"
+        />
+        <div className="mt-3 flex items-center gap-3">
+          <img src={Logo} alt="AMVA logo" className="h-8 w-8 rounded-md object-contain" />
           <div className="text-left">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-600">About AMVA</h2>
-            <div className="text-lg font-semibold text-slate-900">Global capability, local execution</div>
+            <h2 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-sky-600">
+              About AMVA
+            </h2>
+            <div className="text-base font-semibold text-slate-900">
+              Global capability, local execution
+            </div>
           </div>
         </div>
       </div>
 
-      <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-slate-600 md:text-base">
-        AMVA Global Solution Pvt Ltd partners with technology, GCC and enterprise clients to build and manage their presence in India.
-        We combine structured processes, local expertise and thoughtful service design to ensure your teams operate with confidence and clarity from day one.
+      <p className="mx-auto mb-6 max-w-3xl text-sm leading-relaxed text-slate-600 md:text-[15px]">
+        AMVA Global Solution Pvt Ltd partners with technology, GCC and enterprise clients to build
+        and manage their presence in India. We combine structured processes, local expertise and
+        thoughtful service design to ensure your teams operate with confidence and clarity from day
+        one.
       </p>
 
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <div className="mb-3 text-sm font-semibold text-slate-900">Our vision</div>
-          <p className="mb-5 rounded-xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-600">
-            To be the most dependable partner for global organisations building high-performing teams and infrastructure in India.
+          <div className="mb-2 text-sm font-semibold text-slate-900">Our vision</div>
+          <p className="mb-4 rounded-xl bg-slate-50 p-3 text-sm leading-relaxed text-slate-600">
+            To be the most dependable partner for global organisations building high-performing
+            teams and infrastructure in India.
           </p>
 
-          <div className="mb-3 text-sm font-semibold text-slate-900">Our mission</div>
-          <p className="rounded-xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-600">
-            To simplify global expansion with structured, compliant and scalable solutions in hiring, HR, workspace and IT—delivered through one integrated operating model.
+          <div className="mb-2 text-sm font-semibold text-slate-900">Our mission</div>
+          <p className="rounded-xl bg-slate-50 p-3 text-sm leading-relaxed text-slate-600">
+            To simplify global expansion with structured, compliant and scalable solutions in
+            hiring, HR, workspace and IT—delivered through one integrated operating model.
           </p>
         </div>
 
         <div>
-          <div className="mb-3 text-sm font-semibold text-slate-900">Our core values</div>
-          <ul className="space-y-3">
+          <div className="mb-2 text-sm font-semibold text-slate-900">Our core values</div>
+          <ul className="space-y-2.5">
             {coreValues.map((v) => (
               <li key={v.name} className="flex items-start gap-2">
                 <span className="mt-[3px] h-2 w-2 rounded-full bg-sky-600" />
@@ -108,15 +119,25 @@ export default function About() {
         </div>
       </div>
 
-      <div className="mt-10">
-        <h3 className="mb-4 text-center text-lg font-semibold text-slate-900">Why organisations choose AMVA</h3>
-        <div className="grid gap-6 md:grid-cols-3">
+      <div className="mt-8">
+        <h3 className="mb-3 text-center text-base font-semibold text-slate-900">
+          Why organisations choose AMVA
+        </h3>
+        <div className="grid gap-5 md:grid-cols-3">
           {differentiatorCards.map((card) => (
-            <motion.div key={card.title} variants={cardVariant} className="flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-5 text-center shadow-sm">
-              <img src={card.image} alt={card.title} className="mx-auto mb-4 h-14 w-14 rounded-full object-cover" />
+            <motion.div
+              key={card.title}
+              variants={cardVariant}
+              className="flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-2 text-center shadow-sm"
+            >
+              <img
+                src={card.image}
+                alt={card.title}
+                className="mx-auto mb-3 h-12 w-12 rounded-full object-cover"
+              />
               <div className="mb-1 text-sm font-semibold text-slate-900">{card.title}</div>
-              <div className="mb-3 text-xs text-sky-600">{card.subtitle}</div>
-              <ul className="mt-auto space-y-2 text-left text-xs leading-relaxed text-slate-600">
+              <div className="mb-2 text-xs text-sky-600">{card.subtitle}</div>
+              <ul className="mt-auto space-y-1.5 text-left text-xs leading-relaxed text-slate-600">
                 {card.highlights.map((p, i) => (
                   <li key={i} className="flex gap-2">
                     <span className="mt-[5px] h-1 w-1 rounded-full bg-slate-400" />
@@ -133,14 +154,14 @@ export default function About() {
 
   if (!isClient) {
     return (
-      <section id="about" className="bg-slate-50 py-16">
-        <div className="container">{Content}</div>
+      <section id="about" className="bg-slate-50">
+        <div className="container px-4">{Content}</div>
       </section>
     );
   }
 
   return (
-    <section id="about" className="bg-slate-50 py-16">
+    <section id="about" className="bg-slate-50">
       <motion.div
         variants={containerVariant}
         initial="hidden"

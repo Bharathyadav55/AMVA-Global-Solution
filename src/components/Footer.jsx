@@ -1,81 +1,44 @@
 // src/components/Footer.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/logo.png"; // update path if needed
+import Logo from "../assets/logo.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-slate-200 mt-20">
-      <div className="max-w-7xl mx-auto px-6 py-10">
-        
-        {/* Top Section */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-          
-          {/* Logo + Description */}
-          <div className="flex items-center gap-4">
-            <img
-              src={Logo}
-              alt="AMVA Logo"
-              className="h-10 w-10 rounded-md object-contain"
-            />
-            <div>
-              <p className="text-sm font-semibold text-slate-900">
-                AMVA Global Solution Pvt Ltd
-              </p>
-              <p className="text-xs text-slate-500">
-                Offshore operations for software, IT & GCC organizations.
-              </p>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <nav className="flex flex-wrap items-center gap-6 text-sm">
-            <Link
-              to="/"
-              className="text-slate-600 hover:text-sky-600 transition"
-            >
-              Home
-            </Link>
-            <Link
-              to="/services"
-              className="text-slate-600 hover:text-sky-600 transition"
-            >
-              Services
-            </Link>
-            <Link
-              to="/about"
-              className="text-slate-600 hover:text-sky-600 transition"
-            >
-              About
-            </Link>
-            <Link
-              to="/contact"
-              className="text-slate-600 hover:text-sky-600 transition"
-            >
-              Contact
-            </Link>
-          </nav>
+    <footer className="bg-white border-t border-slate-200">
+      <div className="max-w-6xl mx-auto flex flex-col items-center gap-3 px-4 py-4 md:flex-row md:justify-between">
+        {/* Left: Logo + name */}
+        <div className="flex items-center gap-2">
+          <img
+            src={Logo}
+            alt="AMVA Logo"
+            className="h-8 w-8 rounded-md object-contain"
+          />
+          <span className="text-sm font-semibold text-slate-900">
+            AMVA Global Solution Pvt Ltd
+          </span>
         </div>
 
-        {/* Divider */}
-        <div className="mt-8 mb-6 h-px bg-slate-200"></div>
+        {/* Center: simple nav */}
+        <nav className="flex flex-wrap justify-center gap-4 text-xs text-slate-600">
+          <Link to="/" className="hover:text-sky-600 transition">
+            Home
+          </Link>
+          <Link to="/services" className="hover:text-sky-600 transition">
+            Services
+          </Link>
+          <Link to="/about" className="hover:text-sky-600 transition">
+            About
+          </Link>
+          <Link to="/contact" className="hover:text-sky-600 transition">
+            Contact
+          </Link>
+        </nav>
 
-        {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <p className="text-xs text-slate-500">
-            © {new Date().getFullYear()} AMVA Global Solution Pvt Ltd. All rights reserved.
-          </p>
-
-          <div className="flex items-center gap-4 text-xs text-slate-500">
-            <a href="#" className="hover:text-sky-600 transition">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-sky-600 transition">
-              Terms of Service
-            </a>
-          </div>
-        </div>
-
+        {/* Right: copyright */}
+        <p className="text-[11px] text-slate-500 text-center md:text-right">
+          © {new Date().getFullYear()} AMVA Global Solution Pvt Ltd.
+        </p>
       </div>
     </footer>
   );

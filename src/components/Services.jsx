@@ -1,8 +1,8 @@
 // src/components/Services.jsx
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import services from "../data/services"; // expected shape: [{ slug, name, img, description, highlights }, ...]
+import services from "../data/services";
 
 const container = {
   hidden: { opacity: 0, y: 12 },
@@ -15,12 +15,15 @@ const item = {
 
 export default function Services({ items = services }) {
   const navigate = useNavigate();
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleItems = showAll ? items : items.slice(0, 4);
 
   return (
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="py-16 bg-linear-to-b from-[#2C4A72] to-[#2C4A72] sm:py-20"
+      className="py-10 bg-linear-to-b from-[#2C4A72] to-[#2C4A72] sm:py-12"
     >
       <div className="mx-auto max-w-7xl px-4">
         <header className="mx-auto max-w-3xl text-center">
@@ -37,9 +40,9 @@ export default function Services({ items = services }) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+          className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
         >
-          {items.map((s, i) => (
+          {visibleItems.map((s, i) => (
             <motion.article
               key={s.slug || s.name + i}
               variants={item}
@@ -47,7 +50,9 @@ export default function Services({ items = services }) {
               onClick={() => navigate(`/services/${s.slug}`)}
               role="button"
               tabIndex={0}
-              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate(`/services/${s.slug}`); }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") navigate(`/services/${s.slug}`);
+              }}
               aria-label={`View details for ${s.name}`}
             >
               <div className="h-44 w-full overflow-hidden rounded-t-2xl bg-slate-100">
@@ -61,12 +66,27 @@ export default function Services({ items = services }) {
 
               <div className="p-5">
                 <h3 className="text-lg font-semibold text-slate-900">{s.name}</h3>
-                {s.description && <p className="mt-2 text-sm text-slate-600 line-clamp-3">{s.description}</p>}
+                {s.description && (
+                  <p className="mt-2 text-sm text-slate-600 line-clamp-3">
+                    {s.description}
+                  </p>
+                )}
 
                 <div className="mt-4 flex items-center justify-between">
                   <span className="text-xs text-slate-500">Learn more</span>
-                  <svg className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <svg
+                    className="h-4 w-4 text-slate-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </div>
               </div>
@@ -74,11 +94,19 @@ export default function Services({ items = services }) {
           ))}
         </motion.div>
 
-        {/* Optional: call-to-action */}
-        <div className="mt-10 text-center">
+        <div className="mt-6 flex justify-center gap-4">
+          {!showAll && items.length > 4 && (
+            <button
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-slate-900 shadow-md hover:scale-[1.01] transition"
+            >
+              More services
+            </button>
+          )}
+
           <button
             onClick={() => navigate("/contact")}
-            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-md hover:scale-[1.01] transition"
+            className="inline-flex items-center gap-2 rounded-full bg-white/90 px-6 py-2.5 text-sm font-semibold text-slate-900 shadow-md hover:scale-[1.01] transition"
           >
             Discuss your needs
           </button>
