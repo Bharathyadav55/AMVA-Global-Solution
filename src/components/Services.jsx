@@ -1,182 +1,86 @@
 // src/components/Services.jsx
-import { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import services from "../data/services"; // expected shape: [{ slug, name, img, description, highlights }, ...]
 
-const serviceItems = [
-  {
-    name: "Remote Hiring & Bulk Recruitment",
-    description:
-      "Source and onboard individual contributors or complete delivery pods for technology, digital and support functions.",
-    highlights: [
-      "Bulk and project-based hiring",
-      "Role-specific assessment and shortlisting",
-      "Structured onboarding documentation",
-    ],
-  },
-  {
-    name: "GCC Support Services",
-    description:
-      "Specialised support for Global Capability Centers operating from India with clear governance and reporting.",
-    highlights: [
-      "Set up India GCC support centers",
-      "Build technical and back-office teams",
-      "Cross-border compliance and coordination",
-    ],
-  },
-  {
-    name: "Dedicated Talent Outsourcing",
-    description:
-      "Managed remote or hybrid teams in India, operating as an extension of your in-house capability.",
-    highlights: [
-      "End-to-end hiring & onboarding",
-      "Payroll, HR and IT management",
-      "Performance and engagement support",
-    ],
-  },
-  {
-    name: "Workspace & Incubation Services",
-    description:
-      "Ready-to-use office spaces designed for software and IT teams, with the flexibility to scale.",
-    highlights: [
-      "Configured, operational workspaces",
-      "Collaboration and focus areas",
-      "On-ground facilities and IT support",
-    ],
-  },
-  {
-    name: "HR & Payroll Management",
-    description:
-      "Centralised HR operations across your India-based workforce, aligned to local regulations.",
-    highlights: [
-      "Employee lifecycle management",
-      "Leave, compliance and documentation",
-      "Payroll, statutory filings and reporting",
-    ],
-  },
-  {
-    name: "IT Infrastructure & Maintenance",
-    description:
-      "Secure, reliable IT environments managed by specialists who understand distributed teams.",
-    highlights: [
-      "System and network setup",
-      "Security, monitoring and maintenance",
-      "Backup and recovery frameworks",
-    ],
-  },
-  {
-    name: "Employer of Record (EOR)",
-    description:
-      "Hire talent in India without a local entity—AMVA acts as the compliant legal employer.",
-    highlights: [
-      "Accelerated market entry",
-      "Labour law and tax compliance",
-      "Transparent payroll and contracts",
-    ],
-  },
-  {
-    name: "Project-Based Outsourcing",
-    description:
-      "Dedicated project teams for IT, operations, digital or support functions, under your direction.",
-    highlights: [
-      "Technology and support delivery",
-      "Structured SLAs and reporting",
-      "Flexible engagement models",
-    ],
-  },
-  {
-    name: "Learning & Development",
-    description:
-      "Targeted training for India-based teams supporting global operations.",
-    highlights: [
-      "Onboarding and induction programs",
-      "Role and capability-specific training",
-      "Soft skills and leadership tracks",
-    ],
-  },
-  {
-    name: "Data Security & Compliance",
-    description:
-      "Security frameworks aligned with global expectations for data privacy and protection.",
-    highlights: [
-      "Access and identity management",
-      "Security audits and controls",
-      "Support for global regulatory requirements",
-    ],
-  },
-  {
-    name: "Consulting & Setup Advisory",
-    description:
-      "Advisory support across legal, operational and infrastructure decisions for India expansion.",
-    highlights: [
-      "Market entry and location strategy",
-      "Entity and vendor selection support",
-      "Cost and operating model design",
-    ],
-  },
-];
-
-const cardVariants = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
+const container = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } },
+};
+const item = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
 
-export default function Services() {
-  const [showAll, setShowAll] = useState(false);
-  const visibleItems = showAll ? serviceItems : serviceItems.slice(0, 6);
+export default function Services({ items = services }) {
+  const navigate = useNavigate();
 
   return (
-    <section id="services" className="bg-white py-16">
-      <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="mb-10 text-center">
-          <h2 className="text-xs font-semibold uppercase tracking-[0.25em] text-sky-600">
+    <section
+      id="services"
+      aria-labelledby="services-heading"
+      className="py-16 bg-linear-to-b from-[#2C4A72] to-[#2C4A72] sm:py-20"
+    >
+      <div className="mx-auto max-w-7xl px-4">
+        <header className="mx-auto max-w-3xl text-center">
+          <h2 id="services-heading" className="text-3xl font-bold text-white">
             Services
           </h2>
-          <p className="mt-2 text-2xl font-semibold text-slate-900 md:text-3xl">
-            A complete stack for building in India
+          <p className="mt-3 text-sm text-slate-100">
+            We help overseas companies set up and manage their operations in India — simplified, compliant and scalable.
           </p>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-600 md:text-base">
-            Whether you are setting up a GCC, expanding engineering capacity or
-            building a support operation, AMVA offers modular services that work
-            together as one coherent solution.
-          </p>
-        </div>
+        </header>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {visibleItems.map((service, i) => (
-            <motion.div
-              key={service.name}
-              initial="initial"
-              whileInView="animate"
-              variants={cardVariants}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:-translate-y-1 hover:shadow-md transition"
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        >
+          {items.map((s, i) => (
+            <motion.article
+              key={s.slug || s.name + i}
+              variants={item}
+              className="cursor-pointer rounded-2xl bg-white shadow-lg hover:-translate-y-1 hover:shadow-2xl transition overflow-hidden"
+              onClick={() => navigate(`/services/${s.slug}`)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate(`/services/${s.slug}`); }}
+              aria-label={`View details for ${s.name}`}
             >
-              <h3 className="text-sm font-semibold text-slate-900">
-                {service.name}
-              </h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
-                {service.description}
-              </p>
+              <div className="h-44 w-full overflow-hidden rounded-t-2xl bg-slate-100">
+                <img
+                  src={s.img}
+                  alt={s.name}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
 
-              <ul className="mt-4 space-y-1.5 text-xs text-slate-600">
-                {service.highlights.map((item, idx) => (
-                  <li key={idx} className="flex gap-2">
-                    <span className="mt-[5px] h-1 w-1 rounded-full bg-sky-500" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-slate-900">{s.name}</h3>
+                {s.description && <p className="mt-2 text-sm text-slate-600 line-clamp-3">{s.description}</p>}
+
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-xs text-slate-500">Learn more</span>
+                  <svg className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="mt-10 flex justify-center">
+        {/* Optional: call-to-action */}
+        <div className="mt-10 text-center">
           <button
-            onClick={() => setShowAll((prev) => !prev)}
-            className="rounded-full border border-slate-300 px-6 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition"
+            onClick={() => navigate("/contact")}
+            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-md hover:scale-[1.01] transition"
           >
-            {showAll ? "Show fewer services" : "View all services"}
+            Discuss your needs
           </button>
         </div>
       </div>

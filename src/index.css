@@ -1,29 +1,137 @@
-/* src/index.css */
+/* 
+  Tailwind CSS v4
+  Using the single-import system that the @tailwindcss/vite plugin expands automatically.
+*/
 
-/* Tailwind v4 with @tailwindcss/vite expects this import which the plugin expands */
 @import "tailwindcss";
 
-/* Optional extra helpers and initial background to reduce flash */
+/* ---------------------------------------------------
+   COLOR SYSTEM — CUSTOM BRAND VARIABLES (Optional)
+   Update these values to match the AMVA brand palette
+--------------------------------------------------- */
 :root {
-  --transition-fast: 200ms;
+  --brand-50:  #eef8ff;
+  --brand-100: #d6f0ff;
+  --brand-200: #bfe0ff;
+  --brand-300: #8fc8ff;
+  --brand-400: #58aaff;
+  --brand-500: #2f8fff;
+  --brand-600: #1f6fdb;
+  --brand-700: #1858b4;
+  --brand-800: #15488f;
+  --brand-900: #123c74;
+
+  --amva: var(--brand-600);
+
+  /* Height of the sticky navbar — adjust if your header height changes */
+  --nav-height: 88px;
 }
 
-/* Ensure page background matches Tailwind's light/dark base */
-html { background-color: #f8fafc; }    /* gray-50 */
-html.dark { background-color: #0f172a; } /* gray-900 */
+/* ---------------------------------------------------
+   BASE TYPOGRAPHY + SMOOTHING
+--------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
 
-/* Default text smoothing / transitions */
 body {
+  background-color: #ffffff;
+  color: #1e293b; /* slate-800 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color var(--transition-fast), color var(--transition-fast);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-/* Accessibility focus */
-:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
+/* ---------------------------------------------------
+   Utility classes (kept simple so @apply usage is valid)
+   These will be handled by Tailwind during build
+--------------------------------------------------- */
+
+/* container helper */
+.container {
+  @apply mx-auto max-w-7xl px-4;
 }
 
-/* Helper: if you have any global tags that were previously hard-coded, prefer using utilities in components */
-/* (No further global color declarations to avoid conflicts with Tailwind utilities) */
+/* Display heading (hero titles) */
+.display-heading {
+  @apply text-4xl md:text-5xl font-extrabold tracking-tight leading-tight;
+}
+
+/* Lead paragraph */
+.lead {
+  @apply text-base md:text-lg text-slate-600 leading-relaxed;
+}
+
+/* Card shadow style for consistent UI */
+.card {
+  @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+}
+
+/* Remove default focus outlines + add nicer focus ring */
+*:focus-visible {
+  @apply outline-none ring-2 ring-sky-500 ring-offset-2;
+}
+
+/* Smoother hover transitions for interactive elements */
+a,
+button {
+  @apply transition-colors duration-150;
+}
+
+/* ---------------------------------------------------
+   IMAGE & SCROLLBAR HELPERS
+--------------------------------------------------- */
+
+/* Smooth rounded images everywhere */
+img {
+  @apply select-none;
+  -webkit-user-drag: none;
+}
+
+/* Scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cfd8e3;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ---------------------------------------------------
+   ANCHOR TARGETS / STICKY NAV OFFSET HELPERS
+   Ensures elements scrolled to via anchors or scrollIntoView
+   appear below the sticky navbar instead of hiding beneath it.
+--------------------------------------------------- */
+
+/* Apply scroll offset to any section or div with an id */
+section[id],
+div[id],
+header[id],
+main[id] {
+  /* Use CSS variable so you can tweak navbar height easily */
+  scroll-margin-top: var(--nav-height);
+}
+
+/* For very small screens where navbar might be taller, use a safe fallback */
+@media (max-width: 640px) {
+  section[id],
+  div[id],
+  header[id],
+  main[id] {
+    scroll-margin-top: calc(var(--nav-height) + 8px);
+  }
+}
+
+/* Utility to quickly set a different offset for specific anchors:
+   <section id="special" class="anchor-offset-sm">...</section>
+*/
+.anchor-offset-sm { scroll-margin-top: calc(var(--nav-height) - 24px); }
+.anchor-offset-lg { scroll-margin-top: calc(var(--nav-height) + 24px); }
+
+/* Prevent horizontal overflow */
+#home-page {
+  overflow-x: hidden;
+}
