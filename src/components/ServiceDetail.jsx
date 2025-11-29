@@ -14,7 +14,7 @@ export default function ServiceDetail() {
 
   if (!service) {
     return (
-      <div className="py-24 bg-white">
+      <div className="py-8 bg-white">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h3 className="text-2xl font-semibold text-slate-800">Service not found</h3>
           <p className="mt-3 text-slate-600">We couldn't find the service you were looking for.</p>
@@ -32,7 +32,7 @@ export default function ServiceDetail() {
   const related = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 
   return (
-    <motion.section initial="hidden" animate="show" variants={container} className="bg-white py-20">
+    <motion.section initial="hidden" animate="show" variants={container} className="bg-white py-8 md:py-12">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Breadcrumb + title hero */}

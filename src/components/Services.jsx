@@ -14,18 +14,19 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
 
+// src/components/Services.jsx
+// ...same imports and variants...
 export default function Services({ items = services }) {
   const navigate = useNavigate();
   const [showAll, setShowAll] = useState(false);
 
-  // show first 4, or all when showAll is true
   const visibleItems = showAll ? items : items.slice(0, 4);
 
   return (
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="py-10 bg-linear-to-b from-[#2C4A72] to-[#2C4A72] sm:py-12"
+      className="py-6 bg-linear-to-b from-[#2C4A72] to-[#2C4A72] sm:py-8"
     >
       <div className="mx-auto max-w-7xl px-4">
         <header className="mx-auto max-w-3xl text-center">
@@ -38,7 +39,6 @@ export default function Services({ items = services }) {
           </p>
         </header>
 
-        {/* key changes with showAll so Framer re-mounts and animates new children correctly */}
         <motion.div
           key={showAll ? "all" : "partial"}
           variants={container}

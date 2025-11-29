@@ -1,13 +1,7 @@
-/* 
-  Tailwind CSS v4
-  Using the single-import system that the @tailwindcss/vite plugin expands automatically.
-*/
-
 @import "tailwindcss";
 
 /* ---------------------------------------------------
-   COLOR SYSTEM — CUSTOM BRAND VARIABLES (Optional)
-   Update these values to match the AMVA brand palette
+   COLOR SYSTEM — CUSTOM BRAND VARIABLES
 --------------------------------------------------- */
 :root {
   --brand-50:  #eef8ff;
@@ -23,7 +17,6 @@
 
   --amva: var(--brand-600);
 
-  /* Height of the sticky navbar — adjust if your header height changes */
   --nav-height: 88px;
 }
 
@@ -36,43 +29,58 @@ html {
 
 body {
   background-color: #ffffff;
-  color: #1e293b; /* slate-800 */
+  color: #1e293b;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 /* ---------------------------------------------------
-   Utility classes (kept simple so @apply usage is valid)
-   These will be handled by Tailwind during build
+   Utility classes
 --------------------------------------------------- */
 
-/* container helper */
 .container {
   @apply mx-auto max-w-7xl px-4;
 }
 
-/* Display heading (hero titles) */
-.display-heading {
-  @apply text-4xl md:text-5xl font-extrabold tracking-tight leading-tight;
+/* Unified section spacing */
+.section-spacing {
+  @apply py-8 md:py-12 lg:py-14;
 }
 
-/* Lead paragraph */
+/* Vertical spacing system */
+.flow {
+  @apply space-y-6 md:space-y-8;
+}
+
+/* Headings scale */
+.h1 {
+  @apply text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight;
+}
+.h2 {
+  @apply text-2xl md:text-3xl font-bold;
+}
+.h3 {
+  @apply text-xl md:text-2xl font-semibold;
+}
+
 .lead {
   @apply text-base md:text-lg text-slate-600 leading-relaxed;
 }
 
-/* Card shadow style for consistent UI */
 .card {
   @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
 }
 
-/* Remove default focus outlines + add nicer focus ring */
+.card-hover {
+  @apply transition-shadow hover:shadow-md;
+}
+
+/* Focus ring */
 *:focus-visible {
   @apply outline-none ring-2 ring-sky-500 ring-offset-2;
 }
 
-/* Smoother hover transitions for interactive elements */
 a,
 button {
   @apply transition-colors duration-150;
@@ -82,13 +90,11 @@ button {
    IMAGE & SCROLLBAR HELPERS
 --------------------------------------------------- */
 
-/* Smooth rounded images everywhere */
 img {
-  @apply select-none;
+  @apply max-w-full h-auto object-cover select-none;
   -webkit-user-drag: none;
 }
 
-/* Scrollbar styling for webkit browsers */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -102,20 +108,15 @@ img {
 
 /* ---------------------------------------------------
    ANCHOR TARGETS / STICKY NAV OFFSET HELPERS
-   Ensures elements scrolled to via anchors or scrollIntoView
-   appear below the sticky navbar instead of hiding beneath it.
 --------------------------------------------------- */
 
-/* Apply scroll offset to any section or div with an id */
 section[id],
 div[id],
 header[id],
 main[id] {
-  /* Use CSS variable so you can tweak navbar height easily */
   scroll-margin-top: var(--nav-height);
 }
 
-/* For very small screens where navbar might be taller, use a safe fallback */
 @media (max-width: 640px) {
   section[id],
   div[id],
@@ -125,13 +126,9 @@ main[id] {
   }
 }
 
-/* Utility to quickly set a different offset for specific anchors:
-   <section id="special" class="anchor-offset-sm">...</section>
-*/
 .anchor-offset-sm { scroll-margin-top: calc(var(--nav-height) - 24px); }
 .anchor-offset-lg { scroll-margin-top: calc(var(--nav-height) + 24px); }
 
-/* Prevent horizontal overflow */
 #home-page {
   overflow-x: hidden;
 }

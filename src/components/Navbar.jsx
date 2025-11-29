@@ -14,7 +14,10 @@ export default function Navbar() {
 
   useEffect(() => {
     function onDoc(e) {
-      if (e.key === "Escape") setOpenDropdown(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        setOpenDropdown(false);
+      }
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setOpenDropdown(false);
       }
@@ -47,7 +50,9 @@ export default function Navbar() {
       transition={{ duration: 0.45 }}
       className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-slate-200"
     >
-      <div className="mx-auto max-w-7xl px-4 md:px-6 py-3 flex items-center justify-between">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 py-2 md:py-3 flex items-center justify-between">
+
+        {/* Brand */}
         <a
           href="#home"
           onClick={goToSection("home")}
@@ -57,7 +62,7 @@ export default function Navbar() {
           <img
             src={Logo}
             alt="AMVA"
-            className="h-10 w-10 rounded-md object-cover shadow-sm"
+            className="h-9 w-9 md:h-10 md:w-10 rounded-md object-cover shadow-sm"
           />
           <div className="hidden md:flex flex-col leading-tight">
             <span className="text-sm font-semibold uppercase tracking-wide text-slate-900">
@@ -66,6 +71,27 @@ export default function Navbar() {
             <span className="text-xs text-slate-500">Solutions Pvt Ltd</span>
           </div>
         </a>
+
+        {/* Hamburger button (mobile) */}
+        <button
+          className="md:hidden p-2 rounded-md hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-sky-500"
+          onClick={() => setOpen((s) => !s)}
+          aria-expanded={open}
+          aria-label="Toggle menu"
+        >
+          <svg
+            className="h-6 w-6 text-slate-700"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            {open ? (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6" aria-label="Primary">
@@ -109,7 +135,6 @@ export default function Navbar() {
                     type="button"
                     onClick={() => {
                       setOpenDropdown(false);
-                      setOpen(false);
                       navigate(`/services/${s.slug}`);
                     }}
                     className="w-full text-left block px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-md"
@@ -128,6 +153,7 @@ export default function Navbar() {
           >
             About
           </a>
+
           <a
             href="#contact"
             onClick={goToSection("contact")}
@@ -145,8 +171,6 @@ export default function Navbar() {
           </a>
         </nav>
 
-        
-
         {/* Mobile menu */}
         {open && (
           <div className="absolute top-16 right-4 w-64 rounded-lg border border-slate-200 bg-white shadow-lg p-3 md:hidden">
@@ -157,6 +181,8 @@ export default function Navbar() {
             >
               Home
             </a>
+
+            {/* Services link (simple for mobile) */}
             <a
               href="#services"
               onClick={goToSection("services")}
@@ -164,6 +190,7 @@ export default function Navbar() {
             >
               Services
             </a>
+
             <a
               href="#about"
               onClick={goToSection("about")}
@@ -171,6 +198,7 @@ export default function Navbar() {
             >
               About
             </a>
+
             <a
               href="#contact"
               onClick={goToSection("contact")}

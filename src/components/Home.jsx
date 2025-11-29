@@ -134,21 +134,21 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-16 bg-slate-50">
+      <section id="about" className="py-6 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4">
           <About />
         </div>
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="py-16">
+      <section id="services" className="py-6">
         <div className="mx-auto max-w-7xl px-4">
           <Services />
         </div>
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="py-16 bg-slate-50">
+      <section id="contact" className="py-6 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4">
           <Contact />
         </div>
