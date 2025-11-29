@@ -145,44 +145,7 @@ export default function Navbar() {
           </a>
         </nav>
 
-        {/* Mobile */}
-        <div className="md:hidden flex items-center gap-2">
-          <a
-            href="https://wa.me/<YOUR_PHONE>?text=Hello%20AMVA"
-            className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-700"
-          >
-            WhatsApp
-          </a>
-
-          <button
-            aria-expanded={open}
-            onClick={() => setOpen((s) => !s)}
-            className="inline-flex items-center justify-center rounded-md border border-slate-200 bg-white px-3 py-2"
-          >
-            <svg
-              className="h-5 w-5 text-slate-700"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {open ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
+        
 
         {/* Mobile menu */}
         {open && (

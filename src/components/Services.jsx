@@ -8,6 +8,7 @@ const container = {
   hidden: { opacity: 0, y: 12 },
   show: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } },
 };
+
 const item = {
   hidden: { opacity: 0, y: 10 },
   show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
@@ -17,6 +18,7 @@ export default function Services({ items = services }) {
   const navigate = useNavigate();
   const [showAll, setShowAll] = useState(false);
 
+  // show first 4, or all when showAll is true
   const visibleItems = showAll ? items : items.slice(0, 4);
 
   return (
@@ -31,27 +33,32 @@ export default function Services({ items = services }) {
             Services
           </h2>
           <p className="mt-3 text-sm text-slate-100">
-            We help overseas companies set up and manage their operations in India — simplified, compliant and scalable.
+            We help overseas companies set up and manage their operations in India — simplified,
+            compliant and scalable.
           </p>
         </header>
 
+        {/* key changes with showAll so Framer re-mounts and animates new children correctly */}
         <motion.div
+          key={showAll ? "all" : "partial"}
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+          className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         >
           {visibleItems.map((s, i) => (
             <motion.article
-              key={s.slug || s.name + i}
+              key={s.slug ?? `${s.name}-${i}`}
               variants={item}
-              className="cursor-pointer rounded-2xl bg-white shadow-lg hover:-translate-y-1 hover:shadow-2xl transition overflow-hidden"
-              onClick={() => navigate(`/services/${s.slug}`)}
+              className="cursor-pointer rounded-2xl bg-white shadow-lg hover:-translate-y-1 hover:shadow-2xl transition-transform overflow-hidden"
+              onClick={() => navigate(`/services/${s.slug ?? ""}`)}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") navigate(`/services/${s.slug}`);
+                if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+                  navigate(`/services/${s.slug ?? ""}`);
+                }
               }}
               aria-label={`View details for ${s.name}`}
             >
@@ -94,13 +101,14 @@ export default function Services({ items = services }) {
           ))}
         </motion.div>
 
-        <div className="mt-6 flex justify-center gap-4">
-          {!showAll && items.length > 4 && (
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          {items.length > 4 && (
             <button
-              onClick={() => setShowAll(true)}
+              onClick={() => setShowAll((s) => !s)}
+              aria-expanded={showAll}
               className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-slate-900 shadow-md hover:scale-[1.01] transition"
             >
-              More services
+              {showAll ? "Show fewer services" : "View more services"}
             </button>
           )}
 

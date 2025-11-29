@@ -3,10 +3,11 @@ import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import FloatingWhatsApp from "./components/FloatingWhatsApp"; // <-- ADDED
 import { motion } from "framer-motion";
 
 const Home = lazy(() => import("./components/Home"));
-const ServiceDetail = lazy(() => import("./components/ServiceDetail")); // keep deep-link optional
+const ServiceDetail = lazy(() => import("./components/ServiceDetail"));
 
 function Loader() {
   return (
@@ -31,13 +32,15 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services/:slug" element={<ServiceDetail />} />
-              {/* fallback: keep routing to home for unknown routes so site feels single-page */}
               <Route path="*" element={<Home />} />
             </Routes>
           </Suspense>
         </main>
 
         <Footer />
+
+        {/* ✅ Floating WhatsApp button — fixed bottom-right */}
+        <FloatingWhatsApp phone="+919866253469" />
       </div>
     </BrowserRouter>
   );

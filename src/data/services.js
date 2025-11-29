@@ -117,19 +117,7 @@ const services = [
       "Soft skills and leadership tracks",
     ],
   },
-  {
-    name: "Data Security & Compliance",
-    slug: "data-security-compliance",
-    img:
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981b?auto=format&fit=crop&w=1200&q=80",
-    description:
-      "Security frameworks aligned with global expectations for data privacy and protection.",
-    highlights: [
-      "Access and identity management",
-      "Security audits and controls",
-      "Support for global regulatory requirements",
-    ],
-  },
+
   {
     name: "Consulting & Setup Advisory",
     slug: "consulting-setup-advisory",

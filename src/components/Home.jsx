@@ -15,7 +15,7 @@ export default function Home() {
       {/* HERO */}
       <section
         id="home"
-        className="flex items-center bg-gradient-to-b from-slate-50 via-white to-slate-50"
+        className="flex items-center bg-linear-to-b from-slate-50 via-white to-slate-50"
       >
         <div className="mx-auto max-w-7xl px-2 py-6 md:py-8 lg:flex lg:items-center lg:gap-8">
           <motion.div

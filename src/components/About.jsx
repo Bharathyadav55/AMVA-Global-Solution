@@ -154,14 +154,14 @@ export default function About() {
 
   if (!isClient) {
     return (
-      <section id="about" className="bg-slate-50">
+      <section id="about" className="bg-slate-50 py-4 md:py-6">
         <div className="container px-4">{Content}</div>
       </section>
     );
   }
 
   return (
-    <section id="about" className="bg-slate-50">
+    <section id="about" className="bg-slate-50 py-4 md:py-6">
       <motion.div
         variants={containerVariant}
         initial="hidden"
