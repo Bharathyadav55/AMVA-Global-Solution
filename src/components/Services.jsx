@@ -112,12 +112,6 @@ export default function Services({ items = services }) {
             </button>
           )}
 
-          <button
-            onClick={() => navigate("/contact")}
-            className="inline-flex items-center gap-2 rounded-full bg-white/90 px-6 py-2.5 text-sm font-semibold text-slate-900 shadow-md hover:scale-[1.01] transition"
-          >
-            Discuss your needs
-          </button>
         </div>
       </div>
     </section>

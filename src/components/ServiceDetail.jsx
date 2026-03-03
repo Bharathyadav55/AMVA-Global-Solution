@@ -47,38 +47,29 @@ export default function ServiceDetail() {
     >
       <div className="max-w-6xl mx-auto px-6">
         {/* Breadcrumb */}
+        {/* Breadcrumb */}
         <motion.div variants={item} className="mb-6">
           <nav aria-label="Breadcrumb" className="text-xs text-slate-500">
             <ol className="flex items-center gap-2">
+
               <li>
-                <a
-                  href="#home"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById("home")?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="hover:underline"
-                >
+                <Link to="/" className="hover:underline">
                   Home
-                </a>
+                </Link>
                 <span className="mx-2">/</span>
               </li>
+
               <li>
-                <a
-                  href="#services"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="hover:underline"
-                >
+                <Link to="/services" className="hover:underline">
                   Services
-                </a>
+                </Link>
                 <span className="mx-2">/</span>
               </li>
+
               <li className="text-slate-700 font-medium" aria-current="page">
                 {service.name}
               </li>
+
             </ol>
           </nav>
         </motion.div>
