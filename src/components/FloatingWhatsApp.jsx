@@ -4,7 +4,7 @@ import React from "react";
 export default function FloatingWhatsApp() {
   const phone = "919703304411"; // 91 + 9703304411
   const message = encodeURIComponent(
-    "Hello! I would like to know more about AMVA Global Solutions."
+    "Hello! I would like to know more about AMVA Global Technologies."
   );
 
   const href = `https://wa.me/${phone}?text=${message}`;

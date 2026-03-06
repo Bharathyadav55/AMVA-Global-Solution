@@ -40,7 +40,7 @@ export default function App() {
         <Footer />
 
         {/* ✅ Floating WhatsApp button — fixed bottom-right */}
-        <FloatingWhatsApp phone="+919866253469" />
+        <FloatingWhatsApp phone="919703304411" />
       </div>
     </BrowserRouter>
   );

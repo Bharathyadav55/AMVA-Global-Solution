@@ -7,31 +7,43 @@ const HERO_IMAGE_URL =
   "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=1200&q=80";
 
 const coreValues = [
-  { name: "Integrity", desc: "Clear, transparent communication in every engagement." },
-  { name: "Excellence", desc: "Consistent focus on quality, timelines and outcomes." },
-  { name: "Reliability", desc: "Operational stability for long-term global partnerships." },
-  { name: "Collaboration", desc: "Working as an extension of your internal teams." },
+  {
+    name: "Integrity",
+    desc: "Transparent communication and ethical practices in every partnership.",
+  },
+  {
+    name: "Excellence",
+    desc: "Delivering high-quality solutions aligned with global standards.",
+  },
+  {
+    name: "Reliability",
+    desc: "Building stable, scalable teams and infrastructure for long-term success.",
+  },
+  {
+    name: "Collaboration",
+    desc: "Working closely with organisations as an extension of their internal teams.",
+  },
 ];
 
 const differentiatorCards = [
   {
     title: "End-to-End Offshore Setup",
-    subtitle: "From concept to steady-state",
+    subtitle: "From strategy to execution",
     highlights: [
-      "Single partner for hiring, HR, workspace and IT",
-      "Clear playbooks for GCC and remote team setup",
-      "Designed for scale and compliance from day one",
+      "Complete support for building offshore teams in India",
+      "Structured processes for hiring, HR and operations",
+      "Designed for scale, compliance and long-term growth",
     ],
     image:
       "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80",
   },
   {
     title: "Managed Workspaces",
-    subtitle: "Operationally ready offices",
+    subtitle: "Operationally ready environments",
     highlights: [
-      "Configurable workspaces aligned to your brand",
-      "Meeting rooms, collaboration zones and focus areas",
-      "On-ground facilities and IT support teams",
+      "Fully equipped and scalable office environments",
+      "Collaboration-friendly meeting and workspace design",
+      "On-ground IT and facilities management support",
     ],
     image:
       "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
@@ -40,9 +52,9 @@ const differentiatorCards = [
     title: "Integrated HR & Compliance",
     subtitle: "Built for global standards",
     highlights: [
-      "Full HR lifecycle management",
+      "Full HR lifecycle and workforce management",
       "Compliance with Indian labour and tax regulations",
-      "Transparent payroll and reporting",
+      "Transparent payroll and operational reporting",
     ],
     image:
       "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
@@ -54,7 +66,10 @@ const containerVariant = {
   visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } },
 };
 
-const cardVariant = { hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } };
+const cardVariant = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function About() {
   const [isClient, setIsClient] = useState(false);
@@ -62,55 +77,92 @@ export default function About() {
 
   const Content = (
     <div className="mx-auto max-w-6xl rounded-2xl border border-slate-100 bg-white px-5 py-8 shadow-sm md:px-8">
+      {/* Header */}
       <div className="mb-6 flex flex-col items-center text-center">
         <img
           src={HERO_IMAGE_URL}
           alt="AMVA Team"
           className="h-20 w-20 rounded-full object-cover border border-slate-100"
         />
+
         <div className="mt-3 flex items-center gap-3">
-          <img src={Logo} alt="AMVA logo" className="h-8 w-8 rounded-md object-contain" />
+          <img
+            src={Logo}
+            alt="AMVA logo"
+            className="h-8 w-8 rounded-md object-contain"
+          />
+
           <div className="text-left">
             <h2 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-sky-600">
               About AMVA
             </h2>
+
             <div className="text-base font-semibold text-slate-900">
-              Global capability, local execution
+              Global capability. Local execution.
             </div>
           </div>
         </div>
       </div>
 
+      {/* About Paragraph */}
       <p className="mx-auto mb-6 max-w-3xl text-sm leading-relaxed text-slate-600 md:text-[15px]">
-        AMVA Global Solution Pvt Ltd partners with technology, GCC and enterprise clients to build
-        and manage their presence in India. We combine structured processes, local expertise and
-        thoughtful service design to ensure your teams operate with confidence and clarity from day
-        one.
+        AMVA Global Technologies Pvt Ltd is a technology and business services
+        company that enables global organisations to establish and scale their
+        operations in India. We specialise in building high-performing offshore
+        teams, delivering managed workspaces, and providing integrated HR and
+        operational support for modern businesses.
       </p>
 
+      <p className="mx-auto mb-6 max-w-3xl text-sm leading-relaxed text-slate-600 md:text-[15px]">
+        Our approach combines global standards with deep local expertise,
+        allowing organisations to expand confidently while maintaining
+        efficiency, compliance, and operational excellence. From talent
+        acquisition and workforce management to infrastructure and workplace
+        solutions, AMVA acts as a trusted partner for organisations building
+        scalable and sustainable operations in India.
+      </p>
+
+      {/* Vision & Mission */}
       <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <div className="mb-2 text-sm font-semibold text-slate-900">Our vision</div>
+          <div className="mb-2 text-sm font-semibold text-slate-900">
+            Our Vision
+          </div>
+
           <p className="mb-4 rounded-xl bg-slate-50 p-3 text-sm leading-relaxed text-slate-600">
-            To be the most dependable partner for global organisations building high-performing
-            teams and infrastructure in India.
+            To become a trusted global partner for organisations establishing
+            and scaling high-performing teams and technology operations in
+            India.
           </p>
 
-          <div className="mb-2 text-sm font-semibold text-slate-900">Our mission</div>
+          <div className="mb-2 text-sm font-semibold text-slate-900">
+            Our Mission
+          </div>
+
           <p className="rounded-xl bg-slate-50 p-3 text-sm leading-relaxed text-slate-600">
-            To simplify global expansion with structured, compliant and scalable solutions in
-            hiring, HR, workspace and IT—delivered through one integrated operating model.
+            To simplify global expansion by delivering integrated solutions
+            across talent acquisition, HR management, workspace infrastructure,
+            and operational support through a reliable and scalable service
+            model.
           </p>
         </div>
 
+        {/* Core Values */}
         <div>
-          <div className="mb-2 text-sm font-semibold text-slate-900">Our core values</div>
+          <div className="mb-2 text-sm font-semibold text-slate-900">
+            Our Core Values
+          </div>
+
           <ul className="space-y-2.5">
             {coreValues.map((v) => (
               <li key={v.name} className="flex items-start gap-2">
                 <span className="mt-[3px] h-2 w-2 rounded-full bg-sky-600" />
+
                 <div>
-                  <div className="text-sm font-semibold text-slate-900">{v.name}</div>
+                  <div className="text-sm font-semibold text-slate-900">
+                    {v.name}
+                  </div>
+
                   <div className="text-sm text-slate-600">{v.desc}</div>
                 </div>
               </li>
@@ -119,36 +171,54 @@ export default function About() {
         </div>
       </div>
 
-      <div className="mt-8">
-        <h3 className="mb-3 text-center text-base font-semibold text-slate-900">
-          Why organisations choose AMVA
-        </h3>
-        <div className="grid gap-5 md:grid-cols-3">
-          {differentiatorCards.map((card) => (
-            <motion.div
-              key={card.title}
-              variants={cardVariant}
-              className="flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-2 text-center shadow-sm"
-            >
-              <img
-                src={card.image}
-                alt={card.title}
-                className="mx-auto mb-3 h-12 w-12 rounded-full object-cover"
-              />
-              <div className="mb-1 text-sm font-semibold text-slate-900">{card.title}</div>
-              <div className="mb-2 text-xs text-sky-600">{card.subtitle}</div>
-              <ul className="mt-auto space-y-1.5 text-left text-xs leading-relaxed text-slate-600">
-                {card.highlights.map((p, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="mt-[5px] h-1 w-1 rounded-full bg-slate-400" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+      {/* Why Choose AMVA */}
+<div className="mt-6">
+
+  <div className="text-center mb-6">
+    <h3 className="text-lg font-semibold text-slate-900">
+      Why Global Organisations Choose AMVA
+    </h3>
+
+    <p className="mt-1 text-sm text-slate-500 max-w-xl mx-auto">
+      A structured approach to building reliable teams, scalable infrastructure,
+      and long-term operational success in India.
+    </p>
+  </div>
+
+  <div className="grid gap-6 md:grid-cols-3">
+    {differentiatorCards.map((card) => (
+      <div
+        key={card.title}
+        className="flex flex-col rounded-2xl border border-slate-100 bg-white p-5 text-center shadow-sm hover:shadow-md transition"
+      >
+        <img
+          src={card.image}
+          alt={card.title}
+          className="mx-auto mb-4 h-14 w-14 rounded-full object-cover"
+        />
+
+        <div className="mb-1 text-base font-semibold text-slate-900">
+          {card.title}
         </div>
+
+        <div className="mb-3 text-sm text-sky-600">
+          {card.subtitle}
+        </div>
+
+        <ul className="space-y-2 text-left text-sm text-slate-600">
+          {card.highlights.map((p, i) => (
+            <li key={i} className="flex gap-2">
+              <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-slate-400" />
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+
       </div>
+    ))}
+  </div>
+
+</div>
     </div>
   );
 

@@ -30,7 +30,7 @@ export default function Home() {
                 alt="AMVA logo"
                 className="h-6 w-6 rounded-full object-cover"
               />
-              <span>AMVA Global Solution Pvt Ltd</span>
+              <span>AMVA Global Technologies Pvt Ltd</span>
             </div>
 
             <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">

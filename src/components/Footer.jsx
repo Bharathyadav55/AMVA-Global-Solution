@@ -50,7 +50,7 @@ export default function Footer() {
             />
             <div>
               <h2 className="text-lg font-bold tracking-wide">AMVA GLOBAL</h2>
-              <p className="text-sm opacity-80">Solutions Pvt Ltd</p>
+              <p className="text-sm opacity-80">Technologies Pvt Ltd</p>
             </div>
           </div>
 
@@ -66,8 +66,8 @@ export default function Footer() {
             </a>
 
             <p className="text-sm opacity-80">
-              📍 AMVA Global Solutions Pvt Ltd<br />
-              Vijayawada, Andhra Pradesh<br />
+              AMVA Global Technologies Pvt Ltd<br />
+              4th Floor, Cowork Valley, Hi Tech city, 3-225, Kavuri Hills Rd, CBI Colony, Madhapur, Hyderabad, Telangana 500033,<br />
               India
             </p>
           </div>
@@ -90,7 +90,7 @@ export default function Footer() {
             </div>
 
             <div className="text-sm opacity-60">
-              © {new Date().getFullYear()} AMVA Global Solutions Pvt Ltd. <br />
+              © {new Date().getFullYear()} AMVA Global Technologies Pvt Ltd. <br />
               All rights reserved.
             </div>
           </div>

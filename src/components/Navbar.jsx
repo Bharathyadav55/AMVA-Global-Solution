@@ -68,7 +68,7 @@ export default function Navbar() {
             <span className="text-sm font-semibold uppercase tracking-wide text-slate-900">
               AMVA Global
             </span>
-            <span className="text-xs text-slate-500">Solutions Pvt Ltd</span>
+            <span className="text-xs text-slate-500">Technologies Pvt Ltd</span>
           </div>
         </a>
 
